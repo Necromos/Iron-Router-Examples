@@ -1,0 +1,85 @@
+<head>
+  <title>Iron-Router-Examples</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="col-md-12">
+  			{{> yield}}
+  		</div>
+  	</div>
+</body>
+
+<template name="hello">
+  <h1>Hello World!</h1>
+  <a href="{{ pathFor 'regionsExample'}}">Next</a>
+</template>
+
+<template name="layout">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+	  			{{> yield}}
+	  		</div>
+  		</div>
+  	</div>
+</template>
+
+<template name="regionLayout">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+				{{> yield region='left'}}
+			</div>
+			<div class="col-md-8">
+				{{> yield}}
+			</div>
+			<div class="col-md-2">
+				{{> yield region='right'}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="regionTemplate">
+	<h2>Hello! I'm region template!</h2>
+	<a href="{{ urlFor 'dataExample'}}">Next</a>
+</template>
+
+<template name="myLeftTemplate">
+	<h5>Hello! I'm on the left!</h5>
+</template>
+
+<template name="myRightTemplate">
+	<h5>Hello! I'm on the right!</h5>
+</template>
+
+<template name="dataTemplate">
+	<h2>I like {{what}}!</h2>
+</template>
+
+<template name="waitTemplate">
+	<h2>Wow at last!</h2>
+</template>
+
+<template name="articles">
+  <div class="row-fluid">
+    <div class="col-md-12">
+      List of Articles:
+    </div>
+  </div>
+  {{#each articles}}
+  <div class="row-fluid">
+    <div class="col-md-4 article-name">{{name}}</div>
+    <div class="col-md-6">{{content}}</div>
+  </div>
+  {{/each}}
+</template>
+
+<template name="notFound">
+	<h2>Well, not found :P</h2>
+</template>
+
+<template name="loadingTemplate">
+	<h1>It may take a while...</h1>
+</template>
