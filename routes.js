@@ -42,19 +42,7 @@ Router.map(function(){
 
 	this.route('waitRoute', {
 		path: '/wait',
-		template: 'waitTemplate',
-		waitOn: function(){
-			return null;
-		},
-
-		action: function(){
-			this.render();
-		}
-	})
-
-	this.route('articles', {
-		path: '/articles',
-
+		template: 'articles',
 		waitOn: function(){
 			return Meteor.subscribe('allArticles');
 		},
@@ -64,6 +52,18 @@ Router.map(function(){
 				this.render();
 			else
 				this.render('loadingTemplate');
+		},
+
+		data: function(){
+			return { articles: Articles.find()};
+		}
+	})
+
+	this.route('articles', {
+		path: '/articles',
+
+		waitOn: function(){
+			return Meteor.subscribe('allArticles');
 		},
 
 		data: function(){
